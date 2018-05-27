@@ -1,0 +1,32 @@
+<form #frmProduct=ngForm (ngSubmit)="save()">
+  <table>
+    <tr>
+      <td>Code</td>
+      <td><input type=text name=code [(ngModel)]="product.code" required #code="ngModel" /></td>
+      <td><span *ngIf="code.touched && code.invalid">Code is Required</span></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input type=text name=description [(ngModel)]="product.description" required #description="ngModel" minlength="5"/></td>
+      <td>
+        <div *ngIf="description.errors">
+            <span *ngIf="description.touched && description.invalid && description.errors.required">Description is Required</span>
+            <span *ngIf="description.touched && description.invalid && description.errors.minlength">Description is min 5 cahracter</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td><input type=number name=price [(ngModel)]="product.price" required #price="ngModel" /></td>
+      <td><span *ngIf="price.touched && price.invalid">Price is Required</span></td>
+    </tr>
+    <tr>
+      <td>Quantity</td>
+      <td><input type=number name=quantity [(ngModel)]="product.quantity" required #quantity="ngModel" /></td>
+      <td><span *ngIf="quantity.touched && quantity.invalid">Quantity is Required</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><button type="submit" [disabled]="frmProduct.invalid">Save</button></td>
+    </tr>
+  </table>
+</form>

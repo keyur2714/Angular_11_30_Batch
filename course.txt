@@ -1,0 +1,18 @@
+Setup
+Basics Of project structure
+simple component
+local ref variable
+Directives : ngFor/ ngIf
+Custome Directives
+Component Communication
+	1. Input ----
+	2. Ouput
+	3. View Child
+Forms:
+DI / Observable	
+Http
+
+
+
+	
+	
