@@ -1,0 +1,42 @@
+<form [formGroup]="studentDetailForm" (ngSubmit)="save()">
+  <table>
+    <tr>
+      <td>Name</td>
+      <td><input type=text formControlName="name" name="name" [(ngModel)]="student.name"/></td>
+      <td>
+        <div *ngIf="studentDetailForm.get('name').errors">
+          <span *ngIf="studentDetailForm.get('name').touched && studentDetailForm.get('name').errors.required">Name is Required</span>        
+          <span *ngIf="studentDetailForm.get('name').touched && studentDetailForm.get('name').errors.minlength">Name is Min 3 Char</span>        
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td><input type=text formControlName="age" name="age" [(ngModel)]="student.age" /></td>
+      <td>
+        <span *ngIf="studentDetailForm.get('age').touched && studentDetailForm.get('age').invalid">Age is Required</span>        
+      </td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td><input type=text formControlName="city" name="city" [(ngModel)]="student.city"/></td>
+      <td>
+        <span *ngIf="studentDetailForm.get('city').touched && studentDetailForm.get('city').invalid">City is Required</span>        
+      </td>
+    </tr>
+    <tr>
+      <td>Mobile No</td>
+      <td><input type=number formControlName="mobileNo" name="mobileNo" [(ngModel)]="student.mobileNo" /></td>
+      <td>
+        <span *ngIf="studentDetailForm.get('mobileNo').touched && studentDetailForm.get('mobileNo').invalid">MobileNo is Required</span>        
+      </td>
+    </tr>
+    <tr>
+      <td>Hobby</td>
+      <td><input type=text formControlName="hobby" name="hobby" [(ngModel)]="student.hobby" /></td>
+    </tr>
+    <tr>
+     <td colspan="2"><button type="submit" [disabled]="studentDetailForm.invalid">Save</button></td>
+    </tr>
+  </table>
+</form>
