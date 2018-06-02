@@ -6,7 +6,8 @@
       <td>
         <div *ngIf="studentDetailForm.get('name').errors">
           <span *ngIf="studentDetailForm.get('name').touched && studentDetailForm.get('name').errors.required">Name is Required</span>        
-          <span *ngIf="studentDetailForm.get('name').touched && studentDetailForm.get('name').errors.minlength">Name is Min 3 Char</span>        
+          <span *ngIf="studentDetailForm.get('name').touched && studentDetailForm.get('name').errors.minlength">Name is Min 3 Char</span>     
+          <span *ngIf="studentDetailForm.get('name').touched && studentDetailForm.get('name').errors.pattern">Name is not in valid format</span>           
         </div>
       </td>
     </tr>
@@ -16,21 +17,24 @@
       <td>
         <span *ngIf="studentDetailForm.get('age').touched && studentDetailForm.get('age').invalid">Age is Required</span>        
       </td>
-    </tr>
-    <tr>
-      <td>City</td>
-      <td><input type=text formControlName="city" name="city" [(ngModel)]="student.city"/></td>
-      <td>
-        <span *ngIf="studentDetailForm.get('city').touched && studentDetailForm.get('city').invalid">City is Required</span>        
-      </td>
-    </tr>
-    <tr>
-      <td>Mobile No</td>
-      <td><input type=number formControlName="mobileNo" name="mobileNo" [(ngModel)]="student.mobileNo" /></td>
-      <td>
-        <span *ngIf="studentDetailForm.get('mobileNo').touched && studentDetailForm.get('mobileNo').invalid">MobileNo is Required</span>        
-      </td>
-    </tr>
+    </tr>    
+    <div formGroupName="address">
+      <tr>
+        <td>City</td>
+        <td><input type=text formControlName="city" name="city" [(ngModel)]="student.city"/></td>
+        <td>          
+          <span *ngIf="studentDetailForm.controls['address'].get('city').touched && studentDetailForm.controls['address'].get('city').invalid">City is Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Mobile No</td>
+        <td><input type=number formControlName="mobileNo" name="mobileNo" [(ngModel)]="student.mobileNo" /></td>
+        <td>
+          <span *ngIf="studentDetailForm.controls['address'].get('mobileNo').touched && studentDetailForm.controls['address'].get('mobileNo').invalid">City is Required</span> 
+        </td>
+      </tr>
+    </div>
+    <span *ngIf="studentDetailForm.controls['address'].invalid">Address is In valid</span>
     <div formArrayName="hobbies">
     <tr *ngFor="let hobby of studentDetailForm.get('hobbies').controls;let i=index">
         <td >
@@ -45,7 +49,7 @@
     <tr>
      <td colspan="2"><button type="submit" [disabled]="studentDetailForm.invalid">Save</button></td>
     </tr>    
-  </table>
+  </table> 
 </form>
 <div *ngIf="isSubmitted">
   Name: {{student.name}} <br/>
