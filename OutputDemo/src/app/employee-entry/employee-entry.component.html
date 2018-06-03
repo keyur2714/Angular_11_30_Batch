@@ -1,0 +1,28 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="add()">
+      <div class="form-group">
+        <label for="empId">EmpId:</label>
+        <input type="text" class="form-control" id="empId" name="empId" [(ngModel)]="employee.empId" ngModel >
+      </div>
+      <div class="form-group">
+        <label for="empName">Emp Name:</label>
+        <input type="text" class="form-control" id="empName" name="empName" [(ngModel)]="employee.name" ngModel >
+      </div>
+      <div class="form-group">
+        <label for="empAge">Age:</label>
+        <input type="text" class="form-control" id="age" name="age" [(ngModel)]="employee.age" ngModel >
+      </div>
+      <div class="form-group">
+        <label for="empSalary">Salary:</label>
+        <input type="text" class="form-control" id="salary" name="salary" [(ngModel)]="employee.salary" ngModel >
+      </div>
+      <div class="form-group">
+        <label for="selDept">Select Department:</label>
+        <select class="form-control" id="department" name="department" [(ngModel)]="employee.deptName">
+          <option value="-1">--Select Department--</option>    
+          <option *ngFor="let dept of deptList" [value]="dept.id">{{dept.name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

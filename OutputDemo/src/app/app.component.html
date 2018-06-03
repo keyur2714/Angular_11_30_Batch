@@ -1,0 +1,16 @@
+<h1>{{title}}</h1>
+<hr/>
+<app-student-entry (getStudentName)="getStudentName($event)"></app-student-entry>
+<hr/>
+<p>Student Names</p>
+<ul>
+  <li *ngFor="let name of studentNames">
+    {{name}}
+  </li>
+</ul>
+<hr/>
+<p>Employee Enty</p>
+<app-employee-entry (getNewEmployee)="getEmployee($event)"></app-employee-entry>
+<hr/>
+<p>Employee List</p>
+<app-display-grid [dataList]="empList" [columnList]="columnList" [displayColumnList]="columnHeaderList"></app-display-grid>
