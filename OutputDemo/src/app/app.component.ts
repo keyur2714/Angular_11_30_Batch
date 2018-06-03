@@ -9,8 +9,8 @@ export class AppComponent {
   title = '@Output Demo';
   studentNames = ["denish","vinit"];
 
-  columnList = ["empId","name","age","salary","deptName"];
-  columnHeaderList = ["Id","Name","Age","Salary","Department"];
+  columnList = ["empId","name","age","salary","deptId"];
+  columnHeaderList = ["Id","Name","Age","Salary","Dept #"];
 
   empList: Employee[] = [];
 

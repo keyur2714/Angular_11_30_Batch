@@ -35,7 +35,7 @@ export class EmployeeEntryComponent implements OnInit {
 
   add(){
     console.log(this.employee);
-    console.log(this.employee.deptName);
+    console.log(this.employee.deptId);
     this.getNewEmployee.emit(this.employee);
   }
 }
