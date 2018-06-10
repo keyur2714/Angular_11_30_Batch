@@ -1,0 +1,40 @@
+{{title}}
+
+<h1>With Normal If Condition</h1>
+
+<div [ngClass]="'myDiv'" *ngIf="age >= 18">
+  You can vote for country..!
+</div>
+
+<div [ngClass]="'myDiv'" *ngIf="age < 18">
+  You can not vote for country..!
+</div>
+<hr/>
+<h1>With If/Then/Else Condition</h1>
+<div *ngIf="age >= 18;then ageIfBlock else ageElseBlock">
+</div>
+<ng-template #ageIfBlock>
+  <h2>
+      You can vote for country..!
+  </h2>
+</ng-template>
+<ng-template #ageElseBlock>
+  <h2>
+      You can not vote for country..!
+  </h2>
+</ng-template>
+<hr/>
+<h1>Using NG Swithch</h1>
+<div [ngSwitch]="age">
+  <span *ngSwitchCase="'18'">
+    You can vote for country..!
+  </span>
+
+  <span *ngSwitchCase="'17'">
+    You can not vote for country..!
+  </span>
+</div>
+<hr/>
+<input type="text" #percentage />
+<button (click)="calculateGrade()">Calculate Grade</button>
+{{result}}
