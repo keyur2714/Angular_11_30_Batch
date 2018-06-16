@@ -1,3 +1,35 @@
-<p>
-  book-entry works!
-</p>
+<div class="container">
+  <div class="alert alert-info" *ngIf="statusCode === 201">Book Saved Successfully!.</div>
+  <div class="alert alert-error" *ngIf="statusCode === 400">Un Expected Error in Save!.</div>
+  <form #f="ngForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col"><label>Id</label></div>
+      <div class="col">
+        <input type=number class="form-control" [(ngModel)]="newBook.id" name="id" #id=ngModel />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><label>Book Name</label></div>
+      <div class="col">
+        <input type=text class="form-control" [(ngModel)]="newBook.name" name="name" #name=ngModel />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><label>Author Name</label></div>
+      <div class="col">
+        <input type=text class="form-control" [(ngModel)]="newBook.authorName" name="authorName" #authorName=ngModel />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><label>Price</label></div>
+      <div class="col">
+        <input type=number class="form-control" [(ngModel)]="newBook.price" name="price" #price=ngModel />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" type="submit">Save</button>
+      </div>    
+    </div>
+  </form>
+</div>

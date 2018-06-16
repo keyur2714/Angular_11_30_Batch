@@ -1,16 +1,63 @@
 <div class="container">
+  <div class="alert alert-info" *ngIf="statusCode === 201">Book Saved Successfully!.</div>
+  <div class="alert alert-info" *ngIf="statusCode === 200">Book Updated Successfully!.</div>
+  <div class="alert alert-info" *ngIf="statusCode === 204">Book Deleted Successfully!.</div>
+  <div class="alert alert-danger" *ngIf="statusCode === 400">Un Expected Error in Save!.</div>
+  <form #f="ngForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col"><label>Id</label><sup>*</sup></div>
+      <div class="col">
+        <input type=number class="form-control" [(ngModel)]="newBook.id" name="id" #id=ngModel [readonly]="isUpdate" required/>
+        <span *ngIf="id.invalid && id.touched">Book Id is Required!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><label>Book Name</label><sup>*</sup></div>
+      <div class="col">
+        <input type=text class="form-control" [(ngModel)]="newBook.name" name="name" #name=ngModel required/>
+        <span *ngIf="name.invalid && name.touched">Name is Required!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><label>Author Name</label><sup>*</sup></div>
+      <div class="col">
+        <input type=text class="form-control" [(ngModel)]="newBook.authorName" name="authorName" #authorName=ngModel required/>
+        <span *ngIf="authorName.invalid && authorName.touched">Author Name is Required!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><label>Price</label><sup>*</sup></div>
+      <div class="col">
+        <input type=number class="form-control" [(ngModel)]="newBook.price" name="price" #price=ngModel required/>
+        <span *ngIf="price.invalid && price.touched">Price is Required!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" type="submit" [disabled]="isUpdate || f.invalid">Save</button>
+        <button class="btn btn-primary" type="submit" [disabled]="! isUpdate || f.invalid">Update</button>
+      </div>    
+    </div>
+  </form>
+</div>
+<div class="container">
   <table class="table">
     <tr>
       <th>Id</th>
       <th>Name</th>
       <th>Author</th>
       <th>Price</th>
+      <th>Action</th>
     </tr>
     <tr *ngFor="let book of bookList">
       <td>{{book.id}}</td>
       <td>{{book.name}}</td>
       <td>{{book.authorName}}</td>
       <td>{{book.price}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="edit(book.id)">Edit</button>
+        <button class="btn btn-danger" (click)="delete(book.id)" data-toggle="confirmation">Delete</button>
+      </td>
     </tr>
   </table>
 </div>

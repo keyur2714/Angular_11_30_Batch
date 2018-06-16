@@ -3,7 +3,7 @@ import { Book } from '../model/book.model';
 import { Http,Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class BookService{
@@ -46,5 +46,21 @@ export class BookService{
 
     getBookListWithHttpClientObservable():Observable<Book[]>{
         return this.httpClient.get<Book[]>(this.appUrl);
+    }
+
+    saveBook(newBook:Book):Observable<Response>{
+        return this.http.post(this.appUrl,newBook);                
+    }
+
+    updateBook(newBook:Book):Observable<Response>{
+        return this.http.put(this.appUrl+"/"+newBook.id,newBook);                
+    }
+
+    deleteBook(id:number):Observable<Response>{
+        return this.http.delete(this.appUrl+"/"+id);                
+    }
+
+    getBookById(bookId:number):Observable<Book>{
+        return this.httpClient.get<Book>(this.appUrl+"/"+bookId);
     }
 }
