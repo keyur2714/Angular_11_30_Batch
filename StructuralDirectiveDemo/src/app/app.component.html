@@ -1,0 +1,17 @@
+<h1>{{title}}</h1>
+
+<div *appMyIf="age >= 18">
+    You are Eligble for voting...!
+</div>
+
+<ng-template [appMyIf]="age < 18">
+  <div>
+    You are Not Eligble for voting...!
+  </div>
+</ng-template>
+
+<ul>
+  <li *appMyForLoop="5">
+    keyur   
+  </li>
+</ul>

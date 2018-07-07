@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+{{name | uppercase}}
+<hr/>
+{{name | uppercase | lowercase}}
+<hr/>
+{{currentDate | date: 'dd/MM/yyyy hh:mm'}}
+<hr/>
+<pre>
+{{employee | json}}
+</pre>
+<hr/>
+<p>Custome Pipe</p>
+{{name | uppercase |welcome}}
+<hr/>
+{{name | uppercase |welcome|formateString : '_'}}
