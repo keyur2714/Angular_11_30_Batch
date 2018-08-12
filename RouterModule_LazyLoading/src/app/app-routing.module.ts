@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {RouterModule,Routes } from '@angular/router';
+import {RouterModule,Routes,PreloadAllModules } from '@angular/router';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookEntryComponent } from './book-entry/book-entry.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
       {
 	    path: 'book-list',
-	    loadChildren: './book/book.module#BookModule'
+        loadChildren: './book/book.module#BookModule'        
       },   
    	  {path: 'home' , component: HomeComponent}
     //   {path: 'book-list' , component: BookListComponent},
@@ -18,7 +18,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ 
-        RouterModule.forRoot(routes) 
+        RouterModule.forRoot(
+            routes,
+            {preloadingStrategy : PreloadAllModules}
+        ) 
   ],
   exports: [ 
         RouterModule 
